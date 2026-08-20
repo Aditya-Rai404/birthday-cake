@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Birthday Cake 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+      font-family: Arial;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    input, button {
+      padding: 12px;
+      border: 0;
+      border-radius: 10px;
+      margin: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background: #ff4081;
+      color: white;
+      cursor: pointer;
+    }
+
+    #cake {
+      display: none;
+      margin-top: 30px;
+      font-size: 80px;
+      cursor: pointer;
+      transition: .5s;
+    }
+
+    #name {
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+    }
+
+    #message {
+      font-size: 25px;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="start">
+    <h1>🎉 Birthday Cake 🎉</h1>
+    <input id="nameInput" placeholder="Enter birthday name">
+    <button onclick="createCake()">Create Cake</button>
+  </div>
+
+  <div id="cake">
+    🕯️🕯️🕯️<br>
+    🎂
+    <div id="name"></div>
+    <p>🔪 Click the cake to cut!</p>
+  </div>
+
+  <div id="message"></div>
+
+  <!-- Put your legally obtained audio file here -->
+  <audio id="music" src="stairway.mp3"></audio>
+
+  <script>
+    function createCake() {
+      let name = document.getElementById("nameInput").value || "Birthday Star";
+
+      document.getElementById("start").style.display = "none";
+      document.getElementById("cake").style.display = "block";
+      document.getElementById("name").innerText = name;
+    }
+
+    document.getElementById("cake").onclick = function() {
+      let name = document.getElementById("name").innerText;
+
+      this.style.transform = "rotate(-5deg) scale(1.1)";
+
+      document.getElementById("message").innerHTML =
+        `🎉 Happy Birthday, ${name}! 🎉<br>🍰 Cake Cut! 🍰`;
+
+      // Play music after cutting
+      document.getElementById("music").play();
+    };
+  </script>
+
+</body>
+</html>
